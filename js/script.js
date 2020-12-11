@@ -7,7 +7,7 @@ let countMine;
 let buttonGrid;
 let nbMine = 0;
 let nbMineFind = 0;
-
+let j = 0;
 
 gridContainner.style.display ="none";
 
@@ -87,6 +87,8 @@ function initMine(){
  * @returns {*}
  */
 function test(coord, val){
+    console.log(j);
+    j++;
     if (gridArray[coord[0]][coord[1]] === val){
         coord[0] = Math.trunc(Math.random()*gridSize[0]);
         coord[1] = Math.trunc(Math.random()*gridSize[1]);
@@ -96,3 +98,24 @@ function test(coord, val){
         return coord;
     }
 }
+
+/*
+function initMine () {
+    let coord1 = Math.trunc (Math.random () * gridSize [0]);
+    let coord2 = Math.trunc (Math.random () * gridSize [1]);
+    laissez le jeton = faux;
+    soit j = 0;
+    pour (soit i = 0; i <nbMine; i ++) {
+        console.log (coord1 + "" + coord2);
+        gridArray [coord1] [coord2] = -1;
+        jeton = vrai;
+        while (jeton === true) {
+            console.log (j);
+            j ++
+            coord1 = Math.trunc (Math.random () * gridSize [0]);
+            coord2 = Math.trunc (Math.random () * gridSize [1]);
+            token = gridArray [coord1] [coord2] === -1;
+        }
+
+    }
+}*/
