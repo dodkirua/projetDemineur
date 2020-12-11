@@ -1,0 +1,134 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+}
+
+img {
+    width: 10vh;
+    height: 10vh;
+}
+
+.principal {
+    width: 90%;
+    height: 90%;
+    margin: 2%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
+}
+
+#container > div {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+}
+#container > div:last-child {
+   height: 70%;
+}
+
+h1 {
+    font-size: 10rem;
+}
+
+.button {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
+    width: 40%;
+    height: 40%;
+    background-color: lightgray;
+}
+
+#gridContainer {
+    flex-direction: row;
+}
+
+
+#grid {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+    height: 100%;
+    width: 80%;
+    background-color: lightgrey;
+}
+
+#gridContainer > div:last-child , #gridContainer > div:last-child div {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+#gridContainer > div:last-child {
+    width: 20%;
+    height: 100%;
+    align-items: flex-start;
+}
+
+
+
+#gridContainer > div:last-child button {
+    width: 100%;
+    height: 30%;
+
+}
+
+p{
+    font-size: 2rem;
+}
+
+
+#gridContainer > div:last-child div{
+    width: 100%;
+    align-items: center;
+    height: 30%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+}
+
+
+
+.gridButton {
+    background-color: grey;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+}
+
+.flag , .flagInterrogation , .bombe {
+    background-size: cover;
+}
+
+.flag{
+    background-image: url("../img/flag.png");
+}
+
+.flagInterrogation {
+    background-image: url("../img/flagInterrogation.png");
+}
+
+.bomb {
+    background-image: url("../img/bomb.png");
+}
