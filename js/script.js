@@ -3,8 +3,9 @@ let gridSize,gridArray = [0,0];
 let container = document.getElementById("container");
 let grid = document.getElementById("grid");
 let gridContainner = document.getElementById("gridContainer");
+let gridButton;
 let countMine;
-let buttonGrid;
+let buttonGrid = [""];
 let nbMine = 0;
 let nbMineFind = 0;
 let j = 0;
@@ -15,16 +16,32 @@ for (let i = 0; i < button.length ; i++){
     button[i].addEventListener("click",function (){
         switch (i){
             case 0 :
-                gridSize = [8,8];
-                nbMine = 10;
-                container.style.display ="none";
-                gridContainner.style.display ="flex";
-                nbMine = 10;
-                initGrid(gridSize);
-                initGridArray();
+               init(8,8,10);
         }
     })
 }
+
+/**
+ *
+ * @param x
+ * @param y
+ * @param nb
+ */
+function init(x,y,nb){
+    gridSize = [x,y];
+    nbMine = nb;
+    container.style.display ="none";
+    gridContainner.style.display ="flex";
+    initGrid(gridSize);
+    initGridArray();
+    cartography();
+}
+
+for (let i = 0 ; i < gridButton.length ; i++){
+    gridButton[i].addEventListener("click",function (){});
+}
+
+
 
 function initGrid(gridInit){
    let  box;
@@ -40,6 +57,7 @@ function initGrid(gridInit){
     countMine = gridContainner.getElementsByTagName("span");
     countMine[0].innerHTML = nbMineFind+"";
     countMine[1].innerHTML = nbMine;
+    gridButton = document.getElementsByClassName("gridButton");
 }
 
 /**
@@ -49,9 +67,9 @@ function initGrid(gridInit){
 function initGridArray() {
     listInit();
     initMine();
-    console.log(gridArray);
-
 }
+
+
 /**
  * Array initialise
  */
@@ -119,3 +137,49 @@ function initMine () {
 
     }
 }*/
+
+
+/**
+ * allows to put the value of the number of mine around
+ */
+function cartography(){
+    for (let i = 0 ; i < gridSize[0] ; i++){
+        for (let j = 0 ; j < gridSize[1] ; j++){
+            testAround(i,j);
+        }
+    }
+}
+
+/**
+ * count the mines around a square
+ * @param a
+ * @param b
+ */
+function testAround(a,b){
+    let nbMineAround = 0;
+    if (a > 0 && b > 0 && gridArray[a-1][b-1] === -1){
+        nbMineAround ++;
+    }
+    if (a > 0 && gridArray[a-1][b] === -1){
+        nbMineAround ++;
+    }
+    if (a > 0 && gridArray[a-1][b+1] === -1){
+        nbMineAround ++;
+    }
+    if (b > 0 && gridArray[a][b-1] === -1){
+        nbMineAround ++;
+    }
+    if (gridArray[a][b+1] === -1){
+        nbMineAround ++;
+    }
+    if (b > 0 && gridArray[a+1][b-1] === -1){
+        nbMineAround ++;
+    }
+    if (gridArray[a+1][b] === -1){
+        nbMineAround ++;
+    }
+    if (gridArray[a+1][b+1] === -1){
+        nbMineAround ++;
+    }
+    gridArray[a][b] = nbMineAround;
+}
